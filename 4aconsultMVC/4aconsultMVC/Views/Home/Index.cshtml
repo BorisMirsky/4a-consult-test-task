@@ -1,0 +1,37 @@
+﻿@model IEnumerable<_4aconsultMVC.Models.Book>;
+
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="@Url.Content("~/css/style.css")" rel="stylesheet" type="text/css" />
+
+
+<div>
+    <br /><br /><br />
+    <p>
+        <a href="@Url.Action("IndexXML", "Home")">Тот же список в XML</a>
+    </p>
+    <br /><br /><br />
+    <Table class="indexTable">
+        <tr>
+            <th><h5>Автор</h5></th>
+            <th><h5>Название книги</h5></th>
+            <th><h5>Год издания</h5></th>
+            <th><h5>Цена</h5></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Author</td>
+                <td>
+                   <a href="@Url.Action("BookPage", "Home", new {id = @item.Id })">@item.Name</a>
+                </td>
+                <td>@item.Year</td>
+                <td>@item.Price</td>
+            </tr>
+        }
+    </Table>
+    <br/><br/><br/>
+</div>

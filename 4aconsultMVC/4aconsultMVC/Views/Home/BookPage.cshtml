@@ -1,0 +1,68 @@
+﻿@model _4aconsultMVC.Models.Book;  //Info;
+
+
+@{
+    ViewData["Title"] = "BookPage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Страница книги</h1>
+
+<link href="@Url.Content("~/css/style.css")" rel="stylesheet" type="text/css" />
+
+<br />
+<br />
+<br />
+<p>
+    <a href="@Url.Action("BookPageXML", "Home", new {id = @Model.Id })">Эта же книга в XML</a>
+</p>
+<br />
+<br />
+<br />
+
+<br />
+<div class="card border-primary mb-3" style="width: 25rem;">
+    <div class="card-body">
+        <p class="card-text">id: <b>@Model.Id</b></p>
+        <p class="card-text">Автор: <b>@Model.Author</b></p>
+        <p class="card-text">Название книги: <b>@Model.Name</b></p>
+        <p class="card-text">Год издания: <b>@Model.Year</b></p>
+        <p class="card-text">Цена: <b>@Model.Price</b></p>
+    </div>
+</div>
+
+<div>
+    <br />
+
+
+    <br />
+
+    <form>
+        <button asp-controller="Home"
+                asp-action="DeleteBookPage"
+                method="get"
+                asp-route-id="@Model.Id"
+                onclick="return confirm('Are you sure?...')"
+                class="btn btn-outline-danger">
+            Удалить запись
+        </button>
+    </form>
+
+    <br/><br/>
+
+    <form>
+        <button asp-controller="Home"
+                asp-action="EditBookPage" 
+                method="get"
+                asp-route-id="@Model.Id"
+                class="btn btn-outline-warning">
+            Редактировать запись
+        </button>
+        <br/><br/>
+    </form>
+
+
+
+
+
+</div>

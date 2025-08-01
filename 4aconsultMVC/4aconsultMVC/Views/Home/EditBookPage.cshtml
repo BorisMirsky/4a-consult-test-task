@@ -1,0 +1,92 @@
+﻿@model _4aconsultMVC.Models.Book; //Info;
+
+
+@{
+    ViewData["Title"] = "EditBookPage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<link href="@Url.Content("~/css/style.css")" rel="stylesheet" type="text/css" />
+
+
+
+<br />
+<div class="view">
+
+    <div class="row form-horizontal">
+        <div class="col-md-12">
+            <p align="center"><h4>Редактирование цены книги</h4></p>
+            <br />
+
+            <div id="fieldPass" style="display: block;">
+
+                @using (Html.BeginForm("EditBookPage", "Home"))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <div class="form-group">
+                        <h5>Автор </h5>
+                        <div class="col-sm-3">
+                            @Html.DisplayFor(model => @Model.Author)
+                            @Html.ValidationMessageFor(model => model.Author)
+                        </div>
+                    </div>
+                    <br />
+
+                    <hr width="300" />
+                    <div class="form-group">
+                        <h5>Название  </h5>
+                        <div class="col-sm-3">
+                            @Html.DisplayFor(model => @Model.Name)
+                            @Html.ValidationMessageFor(model => model.Name)
+                        </div>
+                    </div>
+                    <br />
+
+                    <hr width="300" />
+                    <div class="form-group">
+                        <h5>Год выпуска </h5>
+                        <div class="col-sm-3">
+                            @Html.DisplayFor(model => @Model.Year)
+                            @Html.ValidationMessageFor(model => model.Year)
+                        </div>
+                    </div>
+                    <br />
+
+                    <hr width="300" />
+                    <div class="form-group">
+                        <h5>Цена </h5>
+                        <div class="col-sm-3">
+                            @Html.EditorFor(model => @Model.Price)
+                            @Html.ValidationMessageFor(model => model.Price)
+                        </div>
+                    </div>
+                    <br />
+
+                   <br />
+                    <hr width="300" />
+                    <br />
+                    <br />
+
+                    <form>
+                        <button asp-controller="Home"
+                                asp-action="EditBookPage"
+                                method="post"
+                                asp-route-id="@Model.Id"
+                                asp-route-id="@Model.Id"
+                                class="btn btn-outline-warning">
+                            Сохранить изменения
+                        </button>
+                    </form>
+
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
